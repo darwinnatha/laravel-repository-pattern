@@ -1,0 +1,70 @@
+{
+  "name": "darwinnatha/laravel-repository-pattern",
+  "version": "1.0.0",
+  "description": "An elegant and flexible Repository Architecture package for Eloquent models in Laravel.",
+  "type": "library",
+  "keywords": [
+    "laravel",
+    "repository",
+    "eloquent",
+    "architecture",
+    "pattern"
+  ],
+  "require": {
+    "aaronfrancis/fast-paginate": "^2.0",
+    "illuminate/contracts": "^11.0|^12.0|^13.0",
+    "illuminate/database": "^11.0|^12.0|^13.0",
+    "illuminate/support": "^11.0|^12.0|^13.0",
+    "spatie/laravel-package-tools": "^1.16",
+    "spatie/laravel-query-builder": "^6.0",
+    "symfony/finder": "^6.0|^7.0",
+    "php": "^8.2"
+  },
+  "require-dev": {
+    "larastan/larastan": "^3.0",
+    "laravel/pint": "^1.14",
+    "orchestra/testbench": "^9.0",
+    "pestphp/pest": "^2.0|^3.0",
+    "pestphp/pest-plugin-laravel": "^2.0|^3.0",
+    "phpstan/phpstan-phpunit": "^2.0"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Darwinnatha\\LaravelRepositoryPattern\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Darwinnatha\\LaravelRepositoryPattern\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": "@php vendor/bin/testbench package:discover --ansi",
+    "analyse": "vendor/bin/phpstan analyse",
+    "test": "vendor/bin/pest",
+    "test:unit": "vendor/bin/pest --parallel",
+    "format": "vendor/bin/pint"
+  },
+  "authors": [
+    {
+      "name": "Darwin Fotso",
+      "email": "fotsodarwin@gmail.com"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Darwinnatha\\LaravelRepositoryPattern\\RepositoryServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

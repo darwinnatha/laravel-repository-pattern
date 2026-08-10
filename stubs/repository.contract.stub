@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ contractNamespace }};
+
+use {{ modelClass }};
+use Darwinnatha\LaravelRepositoryPattern\Contracts\Repository;
+
+/**
+ * Interface {{ contractClass }}
+ * 
+ * @extends Repository<{{ modelName }}>
+ */
+interface {{ contractClass }} extends Repository {}

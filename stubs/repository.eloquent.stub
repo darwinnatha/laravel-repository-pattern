@@ -1,0 +1,39 @@
+<?php
+
+namespace {{ eloquentNamespace }};
+
+use {{ modelClass }};
+use {{ contractNamespace }}\{{ contractClass }};
+use Darwinnatha\LaravelRepositoryPattern\Repositories\BaseRepository;
+
+/**
+ * Class {{ eloquentClass }}
+ * 
+ * @extends BaseRepository<{{ modelName }}>
+ */
+final class {{ eloquentClass }} extends BaseRepository implements {{ contractClass }}
+{
+    /**
+     * The model associated with the repository.
+     *
+     * @var class-string<{{ modelName }}>
+     */
+    protected string $model = {{ modelName }}::class;
+
+    /**
+     * The default sort order for the repository.
+     *
+     * @var string
+     */
+    protected string $defaultSort = '-id';
+
+    public function __construct()
+    {
+        parent::__construct([
+            'filters' => [],
+            'includes' => [],
+            'sorts' => [],
+            'relations' => [],
+        ]);
+    }
+}
