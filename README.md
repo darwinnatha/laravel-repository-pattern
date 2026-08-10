@@ -1,7 +1,6 @@
 # Laravel Repository Architecture Package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/darwinnatha/laravel-repository-pattern.svg?style=flat-square)](https://packagist.org/packages/darwinnatha/laravel-repository-pattern)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/darwinnatha/laravel-repository-pattern/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/darwinnatha/laravel-repository-pattern/actions)
 [![Total Downloads](https://img.shields.io/packagist/dt/darwinnatha/laravel-repository-pattern.svg?style=flat-square)](https://packagist.org/packages/darwinnatha/laravel-repository-pattern)
 [![License](https://img.shields.io/packagist/l/darwinnatha/laravel-repository-pattern.svg?style=flat-square)](LICENSE.md)
 
