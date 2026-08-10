@@ -15,19 +15,19 @@ use Illuminate\Support\Str;
 final class MakeRepositoryCommand extends Command
 {
     /**
-     * Le nom et la signature de la commande Artisan.
+     * Command name and signature
      *
      * @var string
      */
-    protected $signature = 'make:repository {name : Le nom du repository (ex: TransactionAssessment ou TransactionAssessmentRepository)}
-                            {--m|model= : Le nom du modèle associé (par défaut déduit du nom du repository)}';
+    protected $signature = 'make:repository {name : Repository name (ie: Customer or CustomerRepository)}
+                            {--m|model= : Model name (default is derived from repository name)}';
 
     /**
-     * La description de la commande.
+     * Command description
      *
      * @var string
      */
-    protected $description = 'Génère l\'interface du contrat et l\'implémentation Eloquent du Repository';
+    protected $description = 'Generate Repository interface and Eloquent implementation';
 
     public function __construct(protected Filesystem $files)
     {
@@ -38,7 +38,7 @@ final class MakeRepositoryCommand extends Command
     {
         $rawName = Str::studly($this->argument('name'));
 
-        // Nettoyage pour obtenir la racine du nom (ex: TransactionAssessment)
+        // Clean up to get the base name (ex: Customer)
         $baseName = Str::replaceLast('Repository', '', $rawName);
 
         $modelName = $this->option('model')
@@ -63,7 +63,7 @@ final class MakeRepositoryCommand extends Command
             '{{ modelClass }}' => $modelClass,
             '{{ modelName }}' => $modelName,
         ])) {
-            $this->components->info("Interface créee : [App/Repositories/Contracts/{$contractClass}.php]");
+            $this->components->info("Interface created : [App/Repositories/Contracts/{$contractClass}.php]");
         }
 
         // 2. Génération de l'implémentation (Eloquent)
@@ -75,19 +75,19 @@ final class MakeRepositoryCommand extends Command
             '{{ modelClass }}' => $modelClass,
             '{{ modelName }}' => $modelName,
         ])) {
-            $this->components->info("Implémentation Eloquent créee : [App/Repositories/Eloquent/{$eloquentClass}.php]");
+            $this->components->info("Eloquent implementation created : [App/Repositories/Eloquent/{$eloquentClass}.php]");
         }
 
         return self::SUCCESS;
     }
 
     /**
-     * Crée le fichier si celui-ci n'existe pas déjà.
+     * Creates the file if it does not already exist.
      */
     protected function createClassFromStub(string $path, string $stubPath, array $replacements): bool
     {
         if ($this->files->exists($path)) {
-            $this->components->warn("Le fichier existe déjà : [{$path}]");
+            $this->components->warn("The file already exists : [{$path}]");
 
             return false;
         }
@@ -106,7 +106,7 @@ final class MakeRepositoryCommand extends Command
     }
 
     /**
-     * Déduit le FQCN du modèle cible (App\Models\ModelName).
+     * Qualifies the model name to its FQCN (App\Models\ModelName).
      */
     protected function qualifyModel(string $model): string
     {
