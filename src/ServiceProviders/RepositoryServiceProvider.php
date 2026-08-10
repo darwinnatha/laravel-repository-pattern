@@ -23,7 +23,7 @@ final class RepositoryServiceProvider extends ServiceProvider
 
             // Permet de publier les stubs si l'utilisateur souhaite les personnaliser
             $this->publishes([
-                __DIR__.'/../stubs' => base_path('stubs/vendor/laravel-repository'),
+                __DIR__.'/../../stubs' => base_path('stubs/vendor/laravel-repository'),
             ], 'repository-stubs');
         }
     }
