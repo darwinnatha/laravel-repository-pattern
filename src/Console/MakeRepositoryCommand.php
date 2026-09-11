@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
 final class MakeRepositoryCommand extends Command
 {
     /**
-     * Command name and signature
+     * Command name and signature.
      *
      * @var string
      */
@@ -23,7 +23,7 @@ final class MakeRepositoryCommand extends Command
                             {--m|model= : Model name (default is derived from repository name)}';
 
     /**
-     * Command description
+     * Command description.
      *
      * @var string
      */
