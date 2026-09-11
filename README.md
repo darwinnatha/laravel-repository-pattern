@@ -215,13 +215,13 @@ final class CustomerRepositoryEloquent extends BaseRepository implements Custome
             ],
             'includes' => ['country', 'trusted_devices'],
             'sorts' => ['id', 'email_verified_at'],
-            'relations' => ['credential', 'profile'], // Automatically eager-loaded on every query( from buildQuery() method)
+            'relations' => ['credential', 'profile'], // Automatically eager-loaded on every query(with buildQuery() method)
         ]);
     }
 
     public function wherePhoneNumber(string $phoneNumber): ?Customer
     {
-        return $this->model::whereRelation('profile', 'phone_number', $phoneNumber)->first();
+        return $this->buildQuery()->whereRelation('profile', 'phone_number', $phoneNumber)->first();
     }
 }
 ```
