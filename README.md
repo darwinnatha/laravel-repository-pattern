@@ -106,7 +106,7 @@ final class CustomerRepositoryEloquent extends BaseRepository implements Custome
 
     public function getActiveVerifiedCustomers(): Collection
     {
-        return $this->query()
+        return $this->buildQuery()
             ->where('is_active', true)
             ->whereNotNull('email_verified_at')
             ->get();
@@ -215,7 +215,7 @@ final class CustomerRepositoryEloquent extends BaseRepository implements Custome
             ],
             'includes' => ['country', 'trusted_devices'],
             'sorts' => ['id', 'email_verified_at'],
-            'relations' => ['credential', 'profile'], // Automatically eager-loaded on every query
+            'relations' => ['credential', 'profile'], // Automatically eager-loaded on every query( from buildQuery() method)
         ]);
     }
 
@@ -338,13 +338,13 @@ The `'relations'` array automatically appends relations to **every** query execu
 | --- | --- | --- | --- |
 | `all()` | `array $queries = []` | `Collection\|Paginator` | Retrieves all models. Supports `['paginate' => 15]`. |
 | `trashed()` | `array $queries = []` | `Collection\|Paginator` | Retrieves all soft-deleted models. Supports `['paginate' => 15]`. |
-| `retrieve()` | `string|int $id, bool $withTrashed = false` | `?Model` | Finds a single model by primary key. |
+| `retrieve()` | `string\|int $id, bool $withTrashed = false` | `?Model` | Finds a single model by primary key. |
 | `collect()` | `array $ids, bool $withTrashed = false` | `Collection` | Retrieves models matching an array of IDs. |
 | `where()` | `array $conditions` | `Collection` | Retrieves models matching a condition array. |
 | `whereFirst()` | `array $conditions` | `?Model` | Retrieves first matching model or `null`. |
 | `whereFirstOrFail()` | `array $conditions` | `Model` | Retrieves first matching model or throws 404. |
 | `create()` | `array $attributes, bool $withoutEvents = false` | `?Model` | Creates a model instance. |
-| `update()` | `string|int|Model $id, array $attributes, bool $withoutEvents = false` | `Model` | Updates an existing model. |
+| `update()` | `string\|int\|Model $id, array $attributes, bool $withoutEvents = false` | `Model` | Updates an existing model. |
 | `createOrUpdate()` | `array $conditions, array $attributes, bool $withoutEvents = false` | `Model` | Executes an `updateOrCreate` operation. |
 | `delete()` | `string\|int\|Model $id, bool $withoutEvents = false` | `bool` | Deletes a model by ID or instance. |
 | `restore()` | `string\|int\|Model $id, bool $withoutEvents = false` | `bool` | Restores a soft-deleted model. |
