@@ -59,12 +59,12 @@ namespace App\Repositories\Contracts;
 use App\Models\Customer;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
-use Darwinnatha\LaravelRepositoryPattern\Contracts\RepositoryInterface;
+use Darwinnatha\LaravelRepositoryPattern\Contracts\Repository;
 
 /**
- * @extends RepositoryInterface<Customer>
+ * @extends Repository<Customer>
  */
-interface CustomerRepository extends RepositoryInterface
+interface CustomerRepository extends Repository
 {
     /**
      * Search for a customer by phone number.
@@ -74,7 +74,7 @@ interface CustomerRepository extends RepositoryInterface
     /**
      * Get a list of active verified customers.
      *
-     * @return Collection<int, Customer>
+     * @return Collection<int, Customer>|Paginator<int, Customer>
      */
     public function getActiveVerifiedCustomers(): Collection|Paginator;
 }
