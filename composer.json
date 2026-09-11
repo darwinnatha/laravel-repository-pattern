@@ -1,6 +1,5 @@
 {
   "name": "darwinnatha/laravel-repository-pattern",
-  "version": "1.0.0",
   "description": "An elegant and flexible Repository Architecture package for Eloquent models in Laravel.",
   "type": "library",
   "keywords": [
